@@ -1,17 +1,16 @@
-import Header  from '../Header/Header';
-import Footer  from '../Footer/Footer';
-import '../../assets/main.scss'
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import MainComponent from "../MainComponent/MainComponent";
+import "../../assets/main.scss";
 
 function AppWrapperComponent() {
-    return (
-        <div>
-            <Header />
-            <h4>AppWrapper Comppnent</h4>
-            <Footer />
-        </div>
-
-    )
+  return (
+    <div>
+      <Header />
+      <MainComponent />
+      <Footer />
+    </div>
+  );
 }
-
 
 export default AppWrapperComponent;
