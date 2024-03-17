@@ -1,0 +1,35 @@
+aside {
+    padding-right: 10em;
+}
+
+
+#aside-container {
+    padding-left: 7%;
+    padding-right: 50px;
+  }
+  
+  .container aside {
+
+  }
+  
+  .sidebar {
+    width: 30vw;
+    height: 100vh;
+    padding: 20px;
+    font-size: 16px;
+ 
+  
+    & h3 {
+      font-weight: bold;
+    }
+  
+    p {
+      padding-bottom: 0.3em;
+    }
+  }
+  
+  @media (max-width: 770px) {
+    .sidebar {
+      display: none;
+    }
+  }

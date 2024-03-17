@@ -1,6 +1,7 @@
-import React from "react"; // Pretpostavka je da koristite React
+
 import coverImage from "../../assets/cover-index.jpg";
-import coverImage2 from "../../assets/wheel.jpg";
+import coverImage2 from "../../assets/newsletter.png";
+
 
 function MainComponent() {
   return (
@@ -13,11 +14,35 @@ function MainComponent() {
           <span className="heading-primary-main">Outdoor</span>
           <span className="heading-primary-sub">is where ride happens</span>
         </h1>
-        {/* Ovdje koristite samo <a> umjesto <button><a></a></button> */}
+        {/*  */}
         <a href="#" className="btn btn-background">
           Discover our shop
         </a>
       </div>
+
+  
+      <section className="categories">
+        <h2></h2>
+        <div className="category large">
+          <a href="bicikli.html" className="category-link"></a>
+          <h2>Prodaja bicikla po HOT cijenama</h2>
+        </div>
+        <div className="small-container">
+          <div className="category small">
+            <a href="" className="category-link"></a>
+            <div className="categories-sub-heading">Servis bicikla</div>
+          </div>
+          <div className="category small">
+            <a href="url-za-dodatnu-opremu" className="category-link"></a>
+            <div className="categories-sub-heading">Dodatna oprema</div>
+          </div>
+          <div className="category small">
+            <a href="url-za-ponudu-dijelova" className="category-link"></a>
+            <div className="categories-sub-heading">Ponuda dijelova</div>
+          </div>
+        </div>
+      </section>
+
 
       <section className="newsletter-page">
         <div className="newsletter-image">
@@ -36,7 +61,7 @@ function MainComponent() {
               <div className="newsletter-form">
                 <input type="text" placeholder="Vaše ime" />
                 <br />
-                <input type="email" placeholder="Vaša email adresa" />
+                <input type="text" placeholder="Vaša email adresa" />
                 <div className="newsletter-checkbox">
                   <label>
                     <input type="checkbox" />
@@ -53,6 +78,10 @@ function MainComponent() {
           </div>
         </div>
       </section>
+
+
+
+
     </>
   );
 }

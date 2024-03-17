@@ -1,5 +1,7 @@
+import { NavLink } from 'react-router-dom';
 import "./Header.scss";
 import logo from "../../assets/logo15.png";
+
 
 function Header() {
   return (
@@ -34,22 +36,22 @@ function Header() {
         <nav className="navigation-desktop navigation-desktop-background">
           <ul>
             <li>
-              <a href="./bicikli.html">Bicikli</a>
+              <NavLink to="bicikli">Bicikli</NavLink>
             </li>
             <li>
-              <a href="../dijelovi.html">Dijelovi</a>
+              <NavLink to="dijelovi">Dijelovi</NavLink>
             </li>
             <li>
-              <a href="#">Oprema</a>
+            <NavLink to="oprema">Oprema</NavLink>
             </li>
             <li>
-              <a href="#">Akcija</a>
+            <NavLink to="akcija">Akcija</NavLink>
             </li>
             <li>
-              <a href="blog.html">Blog</a>
+            <NavLink to="blog">Blog</NavLink>
             </li>
             <li>
-              <a href="../kontakt.html">Kontakt</a>
+            <NavLink to="kontakt">Kontakt</NavLink>
             </li>
           </ul>
         </nav>
