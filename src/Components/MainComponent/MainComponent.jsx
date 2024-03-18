@@ -1,7 +1,6 @@
-
+import { NavLink } from "react-router-dom";
 import coverImage from "../../assets/cover-index.jpg";
 import coverImage2 from "../../assets/newsletter.png";
-
 
 function MainComponent() {
   return (
@@ -20,10 +19,10 @@ function MainComponent() {
         </a>
       </div>
 
-  
       <section className="categories">
         <h2></h2>
         <div className="category large">
+          <NavLink to="bicikli"></NavLink>
           <a href="bicikli.html" className="category-link"></a>
           <h2>Prodaja bicikla po HOT cijenama</h2>
         </div>
@@ -42,7 +41,6 @@ function MainComponent() {
           </div>
         </div>
       </section>
-
 
       <section className="newsletter-page">
         <div className="newsletter-image">
@@ -78,10 +76,6 @@ function MainComponent() {
           </div>
         </div>
       </section>
-
-
-
-
     </>
   );
 }

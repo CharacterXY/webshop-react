@@ -1,35 +1,49 @@
-aside {
-    padding-right: 10em;
+.sidebar {
+  min-height: 100%;
+  padding-top: 10rem;
+  top: 0;
+  position: sticky;
+  font-size: 16px;
+  display: flex;
+  border-radius: 5px;
+  color: black;
+  background-color: beige;
+  position: relative;
+  width: 300px;
+
+  & h3 {
+    font-weight: bold;
+  }
+
+  p {
+    padding-bottom: 0.3em;
+  }
 }
 
+.sidebar form {
+  padding: 2em;
+}
 
-#aside-container {
-    padding-left: 7%;
-    padding-right: 50px;
-  }
-  
-  .container aside {
+.form-group {
+  padding-top: em;
+}
 
-  }
-  
+.form-group label {
+  padding-left: 0.3em;
+}
+
+.price-box label {
+  padding-left: 0.3em;
+}
+
+.actual_page {
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (max-width: 770px) {
   .sidebar {
-    width: 30vw;
-    height: 100vh;
-    padding: 20px;
-    font-size: 16px;
- 
-  
-    & h3 {
-      font-weight: bold;
-    }
-  
-    p {
-      padding-bottom: 0.3em;
-    }
+    display: none;
   }
-  
-  @media (max-width: 770px) {
-    .sidebar {
-      display: none;
-    }
-  }
+}

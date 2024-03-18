@@ -1,0 +1,278 @@
+.container-wrapper {
+  display: flex;
+  padding: 0 9%;
+}
+
+.main-content {
+  background-color: #739b73;
+  padding-top: 10rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; // Ako želite da se kartice poravnavaju s lijeve strane
+  gap: 1rem;
+  background-color: #739b73;
+}
+
+.product-card {
+  width: 300px;
+  margin: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  line-height: 1.2rem;
+  height: 430px;
+  border: 1px solid #b6b5b5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-container-header {
+  margin-bottom: 2rem; /* Dodaje prostor ispod teksta */
+  padding: 2em;
+
+  & h2 {
+    text-align: start;
+    padding-bottom: 1em;
+    font-family: var(--secondary-font);
+  }
+
+  & h3 {
+    left: 0 !important;
+  }
+
+  & p {
+    font-size: 1.4rem;
+    font-family: var(--main-font);
+    text-align: justify;
+    padding-right: 0.7rem;
+  }
+}
+
+/* Dodavanje stilova za drop-down kupnja po kriterijima */
+select {
+  padding: 0.7rem;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+}
+
+.filter-label {
+  display: block;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: whitesmoke;
+}
+
+.sale-only {
+  display: inline-block;
+  padding-left: 3em;
+  font-size: 1rem;
+  color: red;
+}
+
+.checkbox {
+  margin-left: 1rem;
+}
+
+.checkbox-text {
+  font-size: 20px;
+  color: var(--color-primary);
+}
+
+input[type="checkbox"] {
+  accent-color: rgb(81, 101, 81);
+}
+
+/* Skrivanje originalnog checkboxa */
+.custom-checkbox input[type="checkbox"] {
+  visibility: hidden;
+  position: absolute;
+}
+
+.custom-checkbox {
+  font-size: 16px;
+  padding-left: 1em;
+}
+
+/* Stiliziranje labela koji će služiti kao prilagođeni checkbox */
+.custom-checkbox .checkmark {
+  display: inline-block;
+  width: 24px; /* Velikost prilagođenog checkboxa */
+  height: 24px; /* Visina prilagođenog checkboxa */
+  background: #5d7661; /* Pozadina kad nije označen */
+  margin-right: 10px;
+  border-radius: 4px; /* Zaobljeni uglovi */
+  position: relative;
+  top: 5px; /* Poravnavanje s tekstom */
+}
+
+/* Kad je checkbox označen, prikaži crvenkastu i bijeli check */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background-color: #e66e59; /* bljedo crvena kad je aktivno */
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 8px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.filter-modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s linear;
+  visibility: hidden;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #739b73;
+  z-index: 9999;
+}
+
+.filter-modal:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-heading {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  & h2 {
+    font-family: var(--main-font);
+    font-weight: 300;
+  }
+}
+
+.filter-body {
+  width: 80%;
+  height: 100vh;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.filter-close {
+  color: red;
+  font-size: 25px;
+}
+
+.filter-divider {
+  border: none;
+  border-top: 1px solid #dfdcdc; /* Možete prilagoditi boju crte po potrebi */
+  margin-top: 10px; /* Prilagodite razmak između naslova i crte po potrebi */
+  margin-bottom: 20px; /* Prilagodite razmak između crte i ostalog sadržaja po potrebi */
+}
+
+.filter-category {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  align-items: center;
+}
+
+.fa-solid.fa-plus {
+  font-size: 14px;
+}
+
+.filter-menu {
+  display: none;
+}
+
+.breadcrumb h3 {
+  font-size: 14px;
+  padding-bottom: 10px;
+  padding-left: 0.3em;
+  padding-top: 1em;
+  color: #dfdcdc;
+}
+
+.breadcrumb h3 a {
+  color: #fff; /* Postavlja boju teksta na bijelu */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin-right: 2em;
+  margin-top: 2em;
+
+  &--1 {
+    background-color: #344934;
+    height: 30px;
+    width: 30px;
+    color: white;
+    align-items: center;
+    font-size: 14px;
+    transition: all 0.3s linear;
+
+    &:hover {
+      background-color: orangered;
+    }
+  }
+
+  &--2 {
+    background-color: #344934;
+    height: 30px;
+    width: 30px;
+    color: white;
+    align-items: center;
+    font-size: 14px;
+    &:hover {
+      background-color: orangered;
+    }
+  }
+
+  &--3 {
+    background-color: #344934;
+    height: 30px;
+    width: 30px;
+    color: white;
+    align-items: center;
+    font-size: 14px;
+    &:hover {
+      background-color: orangered;
+    }
+  }
+}
+
+@media (max-width: 1530px) {
+  .card-container {
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width: 1569px) {
+  .product-card {
+    width: 300px;
+    margin: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    line-height: 1.2rem;
+    height: 430px;
+    border: 1px solid #b6b5b5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+}

@@ -1,0 +1,181 @@
+/* -----------------------------------------------*/
+
+/* Product Card Styles */
+.product-card {
+  width: 320px;
+  margin: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  line-height: 1.2rem;
+  height: 430px;
+  border: 1px solid #b6b5b5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  border: 2px solid #4e4d4d;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+}
+
+.product-info {
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  font-size: 18px;
+}
+
+.product-info.product-info-background::before {
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #739b73;
+  position: absolute;
+  z-index: -1;
+  transform: scaleY(0);
+  transition: all 0.5s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  transform-origin: top;
+}
+
+.product-info.product-info-background:hover::before,
+.product-info.product-info-background:focus::before {
+  transform: scaleY(1);
+}
+
+.product-info.product-info-background {
+  z-index: 1;
+}
+
+.product-price {
+  color: rgb(175, 19, 19);
+  font-size: 2rem;
+  padding-top: 15px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.product-title {
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.product-description {
+  padding: 3px;
+  margin-top: 10px;
+  font-size: 1.4rem;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4; /* Broj linija koje zelimo prikazati */
+  -webkit-box-orient: vertical;
+  max-height: 100px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  line-height: 2.2rem;
+}
+.product-description::-webkit-scrollbar-thumb {
+  background-color: #739b73;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+/* Style the scrollbar itself (width and height) */
+.product-description::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+
+.bottom-card {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.bottom-card i {
+  padding-top: 2px;
+}
+
+.bottom-card i:hover {
+  color: red;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  justify-content: space-between;
+  margin-top: 7rem;
+  padding-left: 5em;
+  padding-right: 5em;
+  height: auto;
+}
+
+.bottom-card a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: 700;
+  transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  font-size: 14px;
+}
+
+.product-info:hover a {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin-left: 3em;
+  }
+}
+
+@media (max-width: 1008px) {
+  .product-card .product-title,
+  .product-price,
+  .product-description {
+    font-size: 14px;
+  }
+
+  .bottom-card a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card .product-title,
+  .product-price,
+  .product-description {
+    font-size: 11px;
+  }
+
+  .bottom-card a {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 790px) {
+  .card-container-header {
+    margin-left: 3rem;
+    width: 100%;
+  }
+}

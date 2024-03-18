@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/logo15.png";
-
 
 function Header() {
   return (
@@ -36,22 +35,22 @@ function Header() {
         <nav className="navigation-desktop navigation-desktop-background">
           <ul>
             <li>
-              <NavLink to="bicikli">Bicikli</NavLink>
+              <NavLink to="/bicikli">Bicikli</NavLink>
             </li>
             <li>
-              <NavLink to="dijelovi">Dijelovi</NavLink>
+              <NavLink to="/dijelovi">Dijelovi</NavLink>
             </li>
             <li>
-            <NavLink to="oprema">Oprema</NavLink>
+              <NavLink to="/oprema">Oprema</NavLink>
             </li>
             <li>
-            <NavLink to="akcija">Akcija</NavLink>
+              <NavLink to="/akcija">Akcija</NavLink>
             </li>
             <li>
-            <NavLink to="blog">Blog</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
             <li>
-            <NavLink to="kontakt">Kontakt</NavLink>
+              <NavLink to="/kontakt">Kontakt</NavLink>
             </li>
           </ul>
         </nav>
@@ -74,7 +73,7 @@ function Header() {
               <div className="item-details">
                 <p className="item-name">Trek Fulex Exe 8.0</p>
                 <p className="item-price">2100.00 €</p>
-                <input type="number" value="1" class="item-quantity" />
+                <input type="number" value="1" className="item-quantity" />
               </div>
             </div>
           </div>
