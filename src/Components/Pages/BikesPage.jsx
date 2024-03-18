@@ -8,7 +8,8 @@ import "../../assets/main.scss";
 import "./BikesPage.scss";
 import { NavLink } from "react-router-dom";
 
-function Bikes() {
+function Bikes({ products }) {
+
   return (
     <>
       <Header />
@@ -59,12 +60,10 @@ function Bikes() {
             </label>
           </div>
           <div className="card-container">
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+           { products.map((product) => (
+              <Product />
+           ))}
+          
           </div>
           <div className="pagination">
             <div className="pagination pagination--1">1</div>

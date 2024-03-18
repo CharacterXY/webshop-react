@@ -7,30 +7,32 @@ import AppLayout from "./Components/Pages/AppLayout";
 import BikesPage from "./Components/Pages/BikesPage";
 
 function App() {
+
   const BASE_URL = "http://localhost:9000";
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  function App() {
-    const [products, setProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(function () {
-      async function fetchProducts() {
-        try {
-          setIsLoading(true);
-          const res = await fetch(`${BASE_URL}/products`);
-          const data = await res.json();
-          console.log(data);
-          setProducts(data);
-        } catch {
-          alert("There was an error loading data");
-        } finally {
-          setIsLoading(false);
-        }
+  useEffect(function () {
+    async function fetchProducts() {
+      try {
+       setIsLoading(true)
+        const res = await fetch(`${BASE_URL}/products`);
+        const data = await res.json();
+  
+        console.log(data);
+        setProducts(data);
+  
+      } catch {
+        alert("There was an error loading data");
+      } finally {
+        setIsLoading(false);
       }
+    }
 
-      fetchProducts();
-    }, []);
-  }
+    fetchProducts();
+  }, []);
+
+
 
   return (
     <>
@@ -38,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppWrapperComponent />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/bicikli" element={<BikesPage />} />
+          <Route path="/bicikli" element={<BikesPage products={products} />} />
           <Route path="/oprema" element={<AppLayout />} />
           <Route path="/dijelovi" element={<AppLayout />} />
           <Route path="/blog" element={<AppLayout />} />

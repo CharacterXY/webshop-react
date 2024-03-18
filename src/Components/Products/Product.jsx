@@ -1,7 +1,7 @@
 import "./Product.scss";
 import productImage from "../../assets/bicikli-oprema.jpg";
 
-function Product() {
+function Product({ products }) {
   return (
     <div>
       <div className="product-card">
