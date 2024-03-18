@@ -14,6 +14,14 @@
       "price": "2100.00 €",
       "description": "Ovo je smao neki text o ovoj bicikli",
       "imageUrl": "../../assets/trek-rail.webp"
+    },
+
+    {
+      "id": 3,
+      "title": "Giant Anthem",
+      "price": "1800.00 €",
+      "description": "Ovo je smao neki text o ovoj bicikli",
+      "imageUrl": "../../assets/trek_rail9.8.webp"
     }
   ]
 }

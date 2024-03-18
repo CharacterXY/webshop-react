@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainComponent from "./Components/MainComponent/MainComponent";
+import { useEffect, useState } from "react";
+
 import AppWrapperComponent from "./Components/AppWrapper/AppWrapperComponent";
 import PageNotFound from "./Components/Pages/PageNotFound";
 import AppLayout from "./Components/Pages/AppLayout";
@@ -18,6 +19,7 @@ function App() {
           setIsLoading(true);
           const res = await fetch(`${BASE_URL}/products`);
           const data = await res.json();
+          console.log(data);
           setProducts(data);
         } catch {
           alert("There was an error loading data");
