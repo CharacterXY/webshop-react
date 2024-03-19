@@ -5,7 +5,11 @@
       "title": "TREK Fuel EXe 9.7 2023 Matte Pennyflake",
       "price": "3700.00 €",
       "description": "Fuel EX is a full suspension bike that’s made to hit every trail, every day. From epic long-distance rides to rowdy local trails after work, Fuel EX’s balanced geometry and sweet-spot suspension set-up give you nerve for descents and heart for climbs. We don’t think you should have to choose just one mountain bike. But if you do, choose this one.",
+<<<<<<< HEAD
       "imageUrl": "/src/assets/fuel-ex-8(3).webp"
+=======
+      "imageUrl": "/src/assets/trek-rail.webp"
+>>>>>>> 1bf5159b664d325e1fa4186279ffa300e721dbb7
     },
 
     {
@@ -13,7 +17,11 @@
       "title": "TREK Rail",
       "price": "2100.00 €",
       "description": "Fuel EX is a full suspension bike that’s made to hit every trail, every day. From epic long-distance rides to rowdy local trails after work, Fuel EX’s balanced geometry and sweet-spot suspension set-up give you nerve for descents and heart for climbs. We don’t think you should have to choose just one mountain bike. But if you do, choose this one.",
+<<<<<<< HEAD
       "imageUrl": "/src/assets/fuel-ex-8(2).webp"
+=======
+      "imageUrl": "src/assets/SupercaliberSLR99XOAXS-24-41728-A-Alt1_2048x.webp"
+>>>>>>> 1bf5159b664d325e1fa4186279ffa300e721dbb7
     },
 
     {
@@ -21,7 +29,11 @@
       "title": "Giant Anthem",
       "price": "1800.00 €",
       "description": "Fuel EX is a full suspension bike that’s made to hit every trail, every day. From epic long-distance rides to rowdy local trails after work, Fuel EX’s balanced geometry and sweet-spot suspension set-up give you nerve for descents and heart for climbs. We don’t think you should have to choose just one mountain bike. But if you do, choose this one.",
+<<<<<<< HEAD
       "imageUrl": "/src/assets/trek-rail.webp"
+=======
+      "imageUrl": "src/assets/fuel-ex-8(2).webp"
+>>>>>>> 1bf5159b664d325e1fa4186279ffa300e721dbb7
     }
   ]
 }
