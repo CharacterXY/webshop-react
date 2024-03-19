@@ -57,7 +57,7 @@ function SidebarProducts() {
               name="price"
               min="100"
               max="5000"
-              value={price}
+              defaultValue={price}
               step="10"
             />
             <br />

@@ -9,7 +9,6 @@ import "./BikesPage.scss";
 import { NavLink } from "react-router-dom";
 
 function Bikes({ products }) {
-
   return (
     <>
       <Header />
@@ -60,10 +59,15 @@ function Bikes({ products }) {
             </label>
           </div>
           <div className="card-container">
-           { products.map((product) => (
-              <Product />
-           ))}
-          
+            {products.map((product) => (
+              <Product
+                key={product.id}
+                title={product.title}
+                price={product.price}
+                description={product.description}
+                imageUrl={product.imageUrl}
+              />
+            ))}
           </div>
           <div className="pagination">
             <div className="pagination pagination--1">1</div>
