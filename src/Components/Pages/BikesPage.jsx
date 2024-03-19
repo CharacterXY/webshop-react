@@ -7,8 +7,37 @@ import "../SidebarProducts/SidebarProducts.scss";
 import "../../assets/main.scss";
 import "./BikesPage.scss";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function Bikes({ products }) {
+
+function Bikes() {
+
+  const BASE_URL = "http://localhost:9000";
+  const [products, setProducts] = useState([]);
+  //const [isLoading, setIsLoading] = useState(false);
+
+
+  useEffect(function () {
+    async function fetchProducts() {
+      try {
+       //setIsLoading(true)
+        const res = await fetch(`${BASE_URL}/products`);
+        const data = await res.json();
+  
+        console.log(data);
+        setProducts(data);
+  
+      } catch {
+        alert("There was an error loading data");
+      } finally {
+        //setIsLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
+
 
   return (
     <>
@@ -38,7 +67,7 @@ function Bikes({ products }) {
               kvalitete!
             </p>
 
-            <label className="filter-label" for="search-criteria">
+            <label className="filter-label" >
               Odaberite kriterij za pretragu
             </label>
             <select id="search-criteria" name="criteria">
@@ -60,10 +89,17 @@ function Bikes({ products }) {
             </label>
           </div>
           <div className="card-container">
-           { products.map((product) => (
-              <Product />
-           ))}
-          
+
+           { products?.map((product) => (
+              <Product  
+              key={product.id}
+              product={product}
+              
+
+
+              />
+           ))
+           }
           </div>
           <div className="pagination">
             <div className="pagination pagination--1">1</div>
@@ -77,5 +113,8 @@ function Bikes({ products }) {
     </>
   );
 }
+
+
+
 
 export default Bikes;
