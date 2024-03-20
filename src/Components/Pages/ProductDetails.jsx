@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import "./ProductDetails.scss";
 
 function ProductDetails(){
 
@@ -40,7 +41,7 @@ function ProductDetails(){
 
    return (
      id < productsItem ? (
-    <div className='product-details' style={{ display: 'flex', justifyContent: 'center', textAlign:'center', flexDirection: 'column', alignItems: 'center', height: '100vh', margin: 'auto' }}>
+    <div className='product-details'>
     <h1>Hello from ProductDetails</h1>
          <h2>ID ovog proizvoda je <bold>{id}</bold></h2>
          <h1>{bike[0].title}</h1>
