@@ -36,13 +36,10 @@ function Bikes() {
 
     fetchProducts();
   }, []);
+}
 
+function Bikes() {
 
-<<<<<<< HEAD
-function Bikes({ products }) {
-=======
-
->>>>>>> 1bf5159b664d325e1fa4186279ffa300e721dbb7
   return (
     <>
       <Header />
@@ -93,17 +90,6 @@ function Bikes({ products }) {
             </label>
           </div>
           <div className="card-container">
-<<<<<<< HEAD
-            {products.map((product) => (
-              <Product
-                key={product.id}
-                title={product.title}
-                price={product.price}
-                description={product.description}
-                imageUrl={product.imageUrl}
-              />
-            ))}
-=======
 
            { products?.map((product) => (
               <Product  
@@ -115,7 +101,7 @@ function Bikes({ products }) {
               />
            ))
            }
->>>>>>> 1bf5159b664d325e1fa4186279ffa300e721dbb7
+
           </div>
           <div className="pagination">
             <div className="pagination pagination--1">1</div>
