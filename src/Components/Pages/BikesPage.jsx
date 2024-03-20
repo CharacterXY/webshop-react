@@ -36,9 +36,9 @@ function Bikes() {
 
     fetchProducts();
   }, []);
-}
 
-function Bikes() {
+
+
 
   return (
     <>
