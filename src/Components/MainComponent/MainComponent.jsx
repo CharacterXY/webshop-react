@@ -22,8 +22,8 @@ function MainComponent() {
       <section className="categories">
         <h2></h2>
         <div className="category large">
-          <NavLink to="bicikli"></NavLink>
-          <a href="bicikli.html" className="category-link"></a>
+          <NavLink to="/bicikli"></NavLink>
+   
           <h2>Prodaja bicikla po HOT cijenama</h2>
         </div>
         <div className="small-container">
@@ -44,7 +44,7 @@ function MainComponent() {
 
       <section className="newsletter-page">
         <div className="newsletter-image">
-          {/* Ako imate sliku newslettera, dodajte putanju src-a */}
+
           <img src={coverImage2} />
         </div>
 

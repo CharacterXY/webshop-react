@@ -73,7 +73,7 @@ function Header() {
               <div className="item-details">
                 <p className="item-name">Trek Fulex Exe 8.0</p>
                 <p className="item-price">2100.00 €</p>
-                <input type="number" value="1" className="item-quantity" />
+                {/* <input type="number" value="1" className="item-quantity" /> */}
               </div>
             </div>
           </div>

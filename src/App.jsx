@@ -10,14 +10,14 @@ import BikesPage from "./Components/Pages/BikesPage";
 function App() {
 
   const BASE_URL = "http://localhost:9000";
-  const [products, setProducts] = useState([]);
-  //const [isLoading, setIsLoading] = useState(false);
 
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(function () {
     async function fetchProducts() {
       try {
-       //setIsLoading(true)
+      setIsLoading(true)
         const res = await fetch(`${BASE_URL}/products`);
         const data = await res.json();
   
@@ -27,7 +27,7 @@ function App() {
       } catch {
         alert("There was an error loading data");
       } finally {
-        //setIsLoading(false);
+        setIsLoading(false);
       }
     }
 
@@ -42,8 +42,8 @@ function App() {
         <Routes>
           <Route path="/" element={<AppWrapperComponent />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="bicikli" element={<BikesPage />} />
-            <Route path="bicikli/:id" element={<ProductDetails/>} />
+          <Route path="bicikli" element={<BikesPage products={products} isLoading={isLoading}/>} />
+            <Route path="bicikli/:id" element={<ProductDetails products={products}/>} />
   
           <Route path="/oprema" element={<AppLayout />} />
           <Route path="/dijelovi" element={<AppLayout />} />
