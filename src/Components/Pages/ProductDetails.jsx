@@ -1,55 +1,134 @@
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import React from "react";
+
 import "./ProductDetails.scss";
+import "../../assets/main.scss";
+import "../Products/Product.scss";
+import { useModal } from "../ModalContext";
 
-function ProductDetails(){
+function ProductDetails() {
+  //const [isLoading, setIsLoading] = useState(false);
+  const { selectedProduct, closeModal } = useModal();
 
-    const BASE_URL = "http://localhost:9000";
-    const [products, setProducts] = useState([]);
-    //const [isLoading, setIsLoading] = useState(false);
-  
-  
-    useEffect(function () {
-      async function fetchProducts() {
-        try {
-         //setIsLoading(true)
-          const res = await fetch(`${BASE_URL}/products`);
-          const data = await res.json();
-    
-          console.log(data);
-          setProducts(data);
-    
-        } catch {
-          alert("There was an error loading data");
-        } finally {
-          //setIsLoading(false);
-        }
-      }
-  
-      fetchProducts();
-    }, []);
+  console.log(selectedProduct);
 
-  let stuff = [...products];
+  return selectedProduct ? (
+    <>
+      {/*  <!--MODAL WINDOWS FOR DETAILS OF PRODUCTS --> */}
 
-  let productsItem = stuff.length;
- // console.log(productsItem);
+      <div id="modal-box" className={`modal ${selectedProduct ? "open" : ""}`}>
+        <div className="modal-content">
+          <div className="modal-left">
+            <div className="modal-text">{selectedProduct.title}</div>
+            {Array.isArray(selectedProduct.imageUrl) ? (
+              <img
+                src={selectedProduct.imageUrl[0]}
+                alt="Main Prodcut Image"
+                className="modal-main-image"
+              />
+            ) : (
+              <img
+                src={selectedProduct.imageUrl}
+                alt="Main Prodcut Image"
+                className="modal-main-image"
+              />
+            )}
 
-   let { id } = useParams()
+            <div className="modal-image-gallery">
+              {/*Ostaviti cemo mogucnost da nemaju svi objekti polje imageUrl */}
 
-   const bike = stuff.filter((item) => item.id === id);
+              {Array.isArray(selectedProduct.imageUrl) ? (
+                selectedProduct.imageUrl.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Product Image ${index + 1}`}
+                  />
+                ))
+              ) : (
+                <img src={selectedProduct.imageUrl}></img>
+              )}
+            </div>
+            <p>
+              * Podaci navedeni na ovoj stranici su informativne prirode i nisu
+              obvezujući. Slike ne moraju odgovarati točno proizvodu na
+              stranici, svi podaci su podložni promjeni bez prethodne najave.
+            </p>
+          </div>
 
+          <div className="modal-right">
+            <h3 className="modal-product-title">
+              {selectedProduct.title}
+              <span className="modal-star-rating"> ★★★★☆</span> (0)
+            </h3>
+            <div>{selectedProduct.description}</div>
+            <div className="modal-product-price">
+              <strong>Price:</strong> {selectedProduct.price} €
+            </div>
 
-   return (
-     id < productsItem ? (
-    <div className='product-details'>
-    <h1>Hello from ProductDetails</h1>
-         <h2>ID ovog proizvoda je <bold>{id}</bold></h2>
-         <h1>{bike[0].title}</h1>
-         <h2><bold>Ukupno imamo {productsItem}</bold> na JSON Serveru</h2>
-    </div>
-    
-   ) : <h1 style={{ textAlign: 'center'}}>Error, that ID is not exists</h1>
-   );
+            <div className="modal-availability">
+              <span>
+                <i className="fa-solid fa-warehouse"></i>
+              </span>{" "}
+              Availability: U WEBSHOPU
+            </div>
+            <div className="modal-prodcut-code">Product Code: 90622-5056</div>
+            <div className="modal-product-size">
+              <h3>Velicina</h3>
+              <p>Odaberi velicinu</p>
+              <br />
+              <button className="velicina-bicikle">
+                <a href="">S-27.5"</a>
+              </button>
+              <button className="velicina-bicikle">
+                <a href="">XS-27.5"</a>
+              </button>
+              <button className="velicina-bicikle">
+                <a href="">S</a>
+              </button>
+              <button className="velicina-bicikle">
+                <a href="">M</a>
+              </button>
+              <button className="velicina-bicikle">
+                <a href="">M/L</a>
+              </button>
+              <button className="velicina-bicikle">
+                <a href="">L</a>
+              </button>
+              <button className="velicina-bicikle">
+                <a href="">XL</a>
+              </button>
+            </div>
+
+            <div className="quantity-selector">
+              <button className="quantity-btn" id="decrement">
+                -
+              </button>
+              <input
+                id="quantity-input"
+                className="quantity-input"
+                value="1"
+                min="1"
+                readOnly
+              />
+              <button className="quantity-btn" id="increase">
+                +
+              </button>
+            </div>
+
+            <button className="btn btn-background" id="btn-modal">
+              <i className="fas fa-shopping-cart"></i> Dodaj u košaricu
+            </button>
+          </div>
+
+          <a href="#" className="modal-close">
+            &times;
+          </a>
+        </div>
+      </div>
+    </>
+  ) : (
+    "no data"
+  );
 }
 
 export default ProductDetails;

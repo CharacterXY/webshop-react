@@ -4,28 +4,26 @@ import Footer from "../Footer/Footer";
 import SidebarProducts from "../SidebarProducts/SidebarProducts";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import  Spinner  from "../Spinner/Spinner";
+import Spinner from "../Spinner/Spinner";
 import "../../assets/main.scss";
 import "./BikesPage.scss";
+import { useModal } from "../ModalContext";
 
 function Bikes({ isLoading }) {
-
-
   const BASE_URL = "http://localhost:9000";
   const [products, setProducts] = useState([]);
-  //const [isLoading, setIsLoading] = useState(false);
 
+  const { openModal } = useModal();
 
   useEffect(function () {
     async function fetchProducts() {
       try {
-       //setIsLoading(true)
+        //setIsLoading(true)
         const res = await fetch(`${BASE_URL}/products`);
         const data = await res.json();
-  
-        console.log(data);
+
+        //console.log(data);
         setProducts(data);
-  
       } catch {
         alert("There was an error loading data");
       } finally {
@@ -53,20 +51,22 @@ function Bikes({ isLoading }) {
             <h2>Bicikli po odlicnim cijenama</h2>
 
             <p>
-              Izbor Trek modela izrazito je velik, bez obzira želite li
-              cestovni ili brdski bicikl, ili pak nešto između poput trekking
-              bicikla, oni proizvode sve! Jedan je od najpoznatijih brendova na
-              tržištu i izuzetno rasprostranjen i kod nas, što najviše govori o
-              kvaliteti bicikala koje proizvode. Natjecatelji su također
-              prepoznali kvalitetu njihovih bicikala, pa su upravo na njima
-              osvajane i brojne titule u cestovnom i brdskom biciklizmu.
-              Istražite ponudu Trek bicikala putem našeg Web shopa i odaberite
-              bicikle provjerene kvalitete!
+              Izbor Trek modela izrazito je velik, bez obzira želite li cestovni
+              ili brdski bicikl, ili pak nešto između poput trekking bicikla,
+              oni proizvode sve! Jedan je od najpoznatijih brendova na tržištu i
+              izuzetno rasprostranjen i kod nas, što najviše govori o kvaliteti
+              bicikala koje proizvode. Natjecatelji su također prepoznali
+              kvalitetu njihovih bicikala, pa su upravo na njima osvajane i
+              brojne titule u cestovnom i brdskom biciklizmu. Istražite ponudu
+              Trek bicikala putem našeg Web shopa i odaberite bicikle provjerene
+              kvalitete!
             </p>
 
-            <label className="filter-label">Odaberite kriterij za pretragu</label>
-           
-           {/**  <select id="search-criteria" name="criteria">
+            <label className="filter-label">
+              Odaberite kriterij za pretragu
+            </label>
+
+            {/**  <select id="search-criteria" name="criteria">
               <option value="option1">Najnoviji</option>
               <option value="option1">Cijena: manja prema većoj</option>
               <option value="option2">Cijena: veća prema manjoj</option>
@@ -76,18 +76,37 @@ function Bikes({ isLoading }) {
             */}
 
             <label className="custom-checkbox">
-              <input type="checkbox" id="customCheckbox" name="customCheckbox" />
+              <input
+                type="checkbox"
+                id="customCheckbox"
+                name="customCheckbox"
+              />
               <span className="checkmark"></span>
               Odaberi proizvode samo na akciji
             </label>
           </div>
           <div className="card-container">
             {products.length ? (
-              products.map((product) => <Product key={product.id} product={product} />)
+              products.map((product) => (
+                <Product
+                  id={product.id}
+                  key={product.id}
+                  title={product.title}
+                  description={product.description}
+                  price={product.price}
+                  imageUrl={
+                    Array.isArray(product.imageUrl)
+                      ? product.imageUrl
+                      : [product.imageUrl]
+                  }
+                  onProductClick={() => openModal(product)}
+                />
+              ))
             ) : (
               <Spinner />
             )}
           </div>
+
           <div className="pagination">
             <div className="pagination pagination--1">1</div>
             <div className="pagination pagination--2">2</div>

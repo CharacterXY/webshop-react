@@ -3,29 +3,37 @@
     {
       "id": 1,
       "title": "TREK Fuel EXe 9.7 2023 Matte Pennyflake",
-      "price": "3700.00 €",
+      "price": 3700,
       "description": "Fuel EX is a full suspension bike that’s made to hit every trail, every day. From epic long-distance rides to rowdy local trails after work, Fuel EX’s balanced geometry and sweet-spot suspension set-up give you nerve for descents and heart for climbs. We don’t think you should have to choose just one mountain bike. But if you do, choose this one.",
-      "imageUrl": "/src/assets/trek-rail.webp"
-
+      "imageUrl": "/src/assets/fuel-ex-8(2).webp"
     },
 
     {
       "id": 2,
       "title": "TREK Rail",
-      "price": "2100.00 €",
+      "price": 2100,
       "description": "Fuel EX is a full suspension bike that’s made to hit every trail, every day. From epic long-distance rides to rowdy local trails after work, Fuel EX’s balanced geometry and sweet-spot suspension set-up give you nerve for descents and heart for climbs. We don’t think you should have to choose just one mountain bike. But if you do, choose this one.",
 
       "imageUrl": "src/assets/SupercaliberSLR99XOAXS-24-41728-A-Alt1_2048x.webp"
-
     },
 
     {
       "id": 3,
       "title": "Giant Anthem",
-      "price": "1800.00 €",
+      "price": 1800,
       "description": "Fuel EX is a full suspension bike that’s made to hit every trail, every day. From epic long-distance rides to rowdy local trails after work, Fuel EX’s balanced geometry and sweet-spot suspension set-up give you nerve for descents and heart for climbs. We don’t think you should have to choose just one mountain bike. But if you do, choose this one.",
       "imageUrl": "/src/assets/trek-rail.webp"
-
+    },
+    {
+      "id": 4,
+      "title": "Santa Cruz",
+      "price": 4000,
+      "description": "FThe V10 is the same bike ridden by the Syndicate to World Cup victories. Fully refined, not redefined, the new V10 is for riders looking to just imitate their heroes on Sunday afternoon or find the best lines in the bike park. The kind of rider who knows there’s no replacement for a proper downhill bike. Lap after lap, day after day nothing stands up to the abuse or gives the thrills a downhill bike can. Nothing.",
+      "imageUrl": [
+        "/src/assets/santa_cruz.webp",
+        "/src/assets/santa_cruz2.webp",
+        "/src/assets/santa_cruz3.webp"
+      ]
     }
   ]
 }

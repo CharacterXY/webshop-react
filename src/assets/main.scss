@@ -1,6 +1,4 @@
-
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
 
 *,
 *::after,
@@ -167,8 +165,6 @@ html::-webkit-scrollbar-track {
   justify-content: center;
   padding-left: 9%;
   padding-right: 9%;
-
-
 }
 
 .wrapper {
@@ -244,6 +240,7 @@ h3 {
 
 .modal {
   position: absolute;
+  display: none;
   top: 0;
   bottom: 0;
   left: 0;
@@ -260,6 +257,12 @@ h3 {
   z-index: 9999;
 }
 
+.modal.open {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
 .modal-right {
   display: flex;
   justify-content: space-evenly;
@@ -270,12 +273,13 @@ h3 {
 .modal-right {
   flex: 1;
   padding: 20px;
+  font-size: 16px;
 }
 
 .modal-main-image {
   width: 100%;
   max-height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
 }
 
 .modal-image-gallery {
@@ -322,7 +326,7 @@ h3 {
 .modal-availability,
 .modal-product-code,
 .modal-product-size {
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 
 .velicina-bicikle {
@@ -345,15 +349,15 @@ h3 {
     width: calc(50% - 4px); /* Adjust for fewer columns on small screens */
   }
 }
-
+/* 
 .modal:target {
   visibility: visible;
   opacity: 1;
-}
+} */
 
 .modal-content {
   position: relative;
-  background-color: #fff;
+  background-color: #f3f2f2;
   padding: 1em 2em;
   border-radius: 4px;
   width: 80%;
