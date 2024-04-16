@@ -1,37 +1,42 @@
 .container-wrapper {
   display: flex;
   padding: 0 9%;
+  background-color: #739b73;
 }
 
 .main-content {
-  background-color: #739b73;
-  padding-top: 10rem;
+  background-color: #fffefe;
+  padding-top: 8rem;
+  border-bottom: 6px solid rgb(222, 223, 219);
+  border-right: 10px solid rgb(206, 202, 202);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly; // Ako želite da se kartice poravnavaju s lijeve strane
+  justify-content: center; // Ako želite da se kartice poravnavaju s lijeve strane
   gap: 1rem;
-  background-color: #739b73;
+  background-color: #fafafa;
+  padding-top: 1rem;
 }
 
 .product-card {
   width: 300px;
   margin: 10px;
-  background-color: #fff;
+  background-color: #f8f5f5;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
   line-height: 1.2rem;
-  height: 430px;
-  border: 1px solid #b6b5b5;
+  height: auto;
+  border: 1px solid #e7e7e7;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease-in-out;
+  transition: all box-shadow 0.3s ease-in-out;
 }
 
 .card-container-header {
   margin-bottom: 2rem; /* Dodaje prostor ispod teksta */
-  padding: 2em;
+  padding: 0 15em;
 
   & h2 {
     text-align: start;
@@ -44,10 +49,13 @@
   }
 
   & p {
-    font-size: 1.4rem;
-    font-family: var(--main-font);
+    font-size: 1.6rem;
+    font-family: var(--secondary-font);
     text-align: justify;
+    font-weight: 600;
+
     padding-right: 0.7rem;
+    line-height: 2.9rem;
   }
 }
 
@@ -63,8 +71,8 @@ select {
 .filter-label {
   display: block;
   margin-top: 2rem;
-  font-size: 1.2rem;
-  color: whitesmoke;
+  font-size: 1.4rem;
+  color: rgb(185, 39, 39);
 }
 
 .sale-only {
@@ -199,15 +207,15 @@ input[type="checkbox"] {
 }
 
 .breadcrumb h3 {
-  font-size: 14px;
+  font-size: 18px;
   padding-bottom: 10px;
   padding-left: 0.3em;
   padding-top: 1em;
-  color: #dfdcdc;
+  color: #c02d2d;
 }
 
 .breadcrumb h3 a {
-  color: #fff; 
+  color: #c22b2b;
 }
 
 .pagination {
@@ -216,8 +224,8 @@ input[type="checkbox"] {
   height: 100px;
   margin-right: 2em;
   margin-top: 2em;
+  border-top: 2px solid rgb(112, 134, 112);
 
-  
   &--1 {
     background-color: #344934;
     height: 30px;
@@ -252,9 +260,13 @@ input[type="checkbox"] {
     align-items: center;
     font-size: 14px;
     &:hover {
-      background-color: orangered;
+      background-color: #527052;
     }
   }
+}
+
+.actual_page {
+  border-bottom: 1px solid grey;
 }
 
 @media (max-width: 1530px) {

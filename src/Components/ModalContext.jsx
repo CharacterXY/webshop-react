@@ -11,6 +11,7 @@ export const ModalProvider = ({ children }) => {
   const openModal = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
+    console.log("Test da modal radi");
   };
 
   const closeModal = () => {

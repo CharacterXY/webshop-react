@@ -1,15 +1,46 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import "./ProductDetails.scss";
 import "../../assets/main.scss";
 import "../Products/Product.scss";
 import { useModal } from "../ModalContext";
+import "../Pages/ProductDetails.scss";
 
 function ProductDetails() {
-  //const [isLoading, setIsLoading] = useState(false);
   const { selectedProduct, closeModal } = useModal();
+  const [quantity, setQuantity] = useState(1);
+  const [indexImage, setIndexImage] = useState(0);
 
-  console.log(selectedProduct);
+  const [showToast, setShowToast] = useState(false);
+
+  const handleProductToCart = () => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
+
+  const { openModal } = useModal();
+
+  // Dodajem dinamicki klasu za animaciju da pulsira ovisno o stanju
+  let lightClass = selectedProduct?.isAvailable
+    ? "product-light--green"
+    : "product-light--red";
+
+  function setPicture(index) {
+    setIndexImage(index);
+  }
+
+  function increaseQuantity() {
+    setQuantity(quantity + 1);
+  }
+
+  function decreaseQuantity() {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    } else {
+      alert("Morate imati bar jedan proizvod da biste nastavili");
+    }
+  }
 
   return selectedProduct ? (
     <>
@@ -21,7 +52,11 @@ function ProductDetails() {
             <div className="modal-text">{selectedProduct.title}</div>
             {Array.isArray(selectedProduct.imageUrl) ? (
               <img
-                src={selectedProduct.imageUrl[0]}
+                src={
+                  Array.isArray(selectedProduct.imageUrl)
+                    ? selectedProduct.imageUrl[indexImage]
+                    : selectedProduct.imageUrl[0]
+                }
                 alt="Main Prodcut Image"
                 className="modal-main-image"
               />
@@ -39,13 +74,17 @@ function ProductDetails() {
               {Array.isArray(selectedProduct.imageUrl) ? (
                 selectedProduct.imageUrl.map((image, index) => (
                   <img
+                    onClick={() => setPicture(index)}
                     key={index}
                     src={image}
                     alt={`Product Image ${index + 1}`}
                   />
                 ))
               ) : (
-                <img src={selectedProduct.imageUrl}></img>
+                <img
+                  src={selectedProduct.imageUrl}
+                  alt="Main Product Image"
+                ></img>
               )}
             </div>
             <p>
@@ -66,15 +105,19 @@ function ProductDetails() {
             </div>
 
             <div className="modal-availability">
-              <span>
-                <i className="fa-solid fa-warehouse"></i>
-              </span>{" "}
-              Availability: U WEBSHOPU
+              <h3>
+                {selectedProduct.isAvailable
+                  ? "Raspolozvio"
+                  : "Trenutno Nedostupno"}
+              </h3>
+              <div className={`${lightClass}`}></div>
             </div>
-            <div className="modal-prodcut-code">Product Code: 90622-5056</div>
+            <div className="modal-prodcut-code">
+              <h3> Product Code: {selectedProduct.productCode}</h3>
+            </div>
             <div className="modal-product-size">
-              <h3>Velicina</h3>
-              <p>Odaberi velicinu</p>
+              <h3> Odaberi Velicinu</h3>
+
               <br />
               <button className="velicina-bicikle">
                 <a href="">S-27.5"</a>
@@ -100,29 +143,50 @@ function ProductDetails() {
             </div>
 
             <div className="quantity-selector">
-              <button className="quantity-btn" id="decrement">
+              <button
+                className="quantity-btn"
+                id="decrement"
+                onClick={decreaseQuantity}
+              >
                 -
               </button>
               <input
                 id="quantity-input"
                 className="quantity-input"
-                value="1"
+                value={quantity}
+                onChange={(event) => setQuantity(Number(event.target.value))}
                 min="1"
-                readOnly
               />
-              <button className="quantity-btn" id="increase">
+              <button
+                className="quantity-btn"
+                id="increase"
+                onClick={increaseQuantity}
+              >
                 +
               </button>
             </div>
 
-            <button className="btn btn-background" id="btn-modal">
+            <button
+              className="btn btn-background"
+              id="btn-modal"
+              onClick={handleProductToCart}
+            >
               <i className="fas fa-shopping-cart"></i> Dodaj u košaricu
             </button>
-          </div>
 
-          <a href="#" className="modal-close">
+            {showToast && (
+              <div className="toast show">
+                Proizvod {selectedProduct.title.slice(0, 10)}
+                {selectedProduct.title.length > 10 ? "..." : ""} je dodan u
+                košaricu!
+              </div>
+            )}
+          </div>
+          <NavLink to="/bicikli" className="modal-close" onClick={closeModal}>
+            {" "}
             &times;
-          </a>
+          </NavLink>
+          <a href="" onClick={closeModal}></a>
         </div>
       </div>
     </>
