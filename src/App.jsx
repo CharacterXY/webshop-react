@@ -53,6 +53,7 @@ function App() {
             <Route path="/blog" element={<AppLayout />} />
             <Route path="/akcija" element={<AppLayout />} />
             <Route path="/kontakt" element={<AppLayout />} />
+            <Route path="/cart" element={<AppLayout />} />
           </Routes>
         </BrowserRouter>
       </ModalProvider>

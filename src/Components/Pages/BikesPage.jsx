@@ -63,7 +63,7 @@ function Bikes({ isLoading }) {
 
             <h2>BICIKLI PO ODLIČNIM CIJENAMA</h2>
 
-            <p>
+            <p className="bikes_text">
               {/* Conditional rendering based on showFullDescription */}
               {showFullDescription ? text : `${text.substring(0, 205)}...`}
             </p>

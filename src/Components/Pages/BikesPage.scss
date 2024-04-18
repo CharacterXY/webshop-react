@@ -37,6 +37,7 @@
 .card-container-header {
   margin-bottom: 2rem; /* Dodaje prostor ispod teksta */
   padding: 0 15em;
+  width: 100%;
 
   & h2 {
     text-align: start;
@@ -49,7 +50,6 @@
   }
 
   & p {
-    font-size: 1.6rem;
     font-family: var(--secondary-font);
     text-align: justify;
     font-weight: 600;
@@ -287,5 +287,34 @@ input[type="checkbox"] {
     border: 1px solid #b6b5b5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 771px) {
+  .main-content {
+    margin-left: 0rem;
+    width: 100%;
+  }
+
+  .main-content h2 {
+    font-size: 18px;
+    padding-top: 1.5em;
+  }
+
+  .card-container-header {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 3em;
+  }
+
+  .bikes_text {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 772px) {
+  .bikes_text {
+    font-size: 14px;
   }
 }

@@ -22,9 +22,11 @@ function Header() {
         <div className="header__web-icons">
           <a href="#search" className="fas fa-search"></a>
           <div id="login-btn" className="fas fa-user"></div>
-          <a href="#card-modal" className="fas fa-shopping-cart">
-            <span className="cart-counter">1</span>
-          </a>
+          <NavLink to="/cart">
+            <a href="" className="fas fa-shopping-cart">
+              <span className="cart-counter">1</span>
+            </a>
+          </NavLink>
         </div>
       </div>
 
