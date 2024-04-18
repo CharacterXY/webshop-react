@@ -14,17 +14,22 @@ function SidebarProducts() {
     {
       id: "brand1",
       value: "Trek",
-      name: "brand1",
+      name: "Trek",
     },
     {
       id: "brand2",
-      value: "Trek",
-      name: "brand2",
+      value: "Giant",
+      name: "Giant",
     },
     {
       id: "brand3",
-      value: "Trek",
-      name: "brand3",
+      value: "Norco",
+      name: "Norco",
+    },
+    {
+      id: "brand3",
+      value: "Specialized",
+      name: "Specialized",
     },
   ];
 
@@ -35,7 +40,6 @@ function SidebarProducts() {
       <aside className="sidebar">
         <form action="" method="GET">
           <h3>Brands:</h3>
-          <br />
           <hr />
           <br />
 
@@ -44,34 +48,37 @@ function SidebarProducts() {
               <div key={item.id} className="form-group">
                 <input
                   type="checkbox"
-                  id={item.name}
+                  id={item.id}
                   name={item.name}
                   value={item.value}
                 />
-                <label htmlFor={item.name}>Trek</label>
+                <label htmlFor={item.name}>{item.name}</label>
               </div>
             );
           })}
+          <br />
+          <h3>Category:</h3>
+          <hr />
+          <br />
           <div className="form-group">
-            {/* <input type="checkbox" id="brand1" name="brand1" value="Trek" /> */}
-            <label htmlFor="brand1">Trek</label>
+            <input type="checkbox" id="brand1" name="brand1" value="Trek" />
+            <label htmlFor="category1">MTB</label>
           </div>
           <div className="form-group">
-            {/* <input type="checkbox" id="brand2" name="brand2" value="Giant" /> */}
-            <label htmlFor="brand2">Giant</label>
+            <input type="checkbox" id="brand2" name="brand2" value="Giant" />
+            <label htmlFor="category2">City Bikes</label>
           </div>
           <div className="form-group">
-            {/* <input type="checkbox" id="brand3" name="brand3" value="Norco" /> */}
-            <label htmlFor="brand3">Norco</label>
+            <input type="checkbox" id="brand3" name="brand3" value="Norco" />
+            <label htmlFor="category3">Electric Bikes</label>
           </div>
           <br />
           <h3>Price:</h3>
-          <br />
           <hr />
-          <br />
+
           <div className="price-box">
             <p>Please select your price:</p>
-            <br />
+
             <input type="radio" id="price1" name="price" defaultValue="100" />
             <label htmlFor="price1">0 - 100 € </label>
             <br />
@@ -95,8 +102,11 @@ function SidebarProducts() {
             <br />
             <br />
 
-            <p>
-              Value: <output htmlFor="price">{price}</output> €
+            <p className="">
+              Value:{" "}
+              <output htmlFor="price" className="sidebar-price">
+                {price} €
+              </output>{" "}
             </p>
           </div>
         </form>

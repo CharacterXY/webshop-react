@@ -50,50 +50,6 @@
   }
 }
 
-/* Stiliziranje trake */
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  background: rgb(73, 133, 76); /* plava boja trake */
-  border-radius: 5px;
-}
-
-/* Stiliziranje klizača */
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Uklanja standardni stil */
-  appearance: none;
-  height: 20px;
-  width: 20px;
-  background: rgb(240, 236, 236); /* crvena boja klizača */
-  cursor: pointer; /* kursor kao pokazivač */
-  border-radius: 50%; /* kružni klizač */
-  margin-top: -6px; /* centriranje klizača na traci */
-}
-
-/* Dodatne stilizacije za Firefox */
-input[type="range"]::-moz-range-track {
-  background: rgb(80, 124, 91);
-  height: 8px;
-  border-radius: 5px;
-}
-
-input[type="range"]::-moz-range-thumb {
-  background: rgb(236, 232, 232);
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-}
-
-/* Dodatne stilizacije za Internet Explorer */
-input[type="range"]::-ms-track {
-  background: rgb(59, 112, 62);
-  height: 8px;
-  border-radius: 5px;
-}
-
-input[type="range"]::-ms-thumb {
-  background: !important rgb(231, 229, 229);
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
+.sidebar-products {
+  color: red;
 }

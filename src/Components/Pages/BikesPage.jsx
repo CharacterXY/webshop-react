@@ -33,7 +33,6 @@ function Bikes({ isLoading }) {
   useEffect(function () {
     async function fetchProducts() {
       try {
-        //setIsLoading(true)
         const res = await fetch(`${BASE_URL}/products`);
         const data = await res.json();
 
@@ -42,7 +41,6 @@ function Bikes({ isLoading }) {
       } catch {
         alert("There was an error loading data");
       } finally {
-        //setIsLoading(false);
       }
     }
 
