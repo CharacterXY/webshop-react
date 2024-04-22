@@ -1,5 +1,10 @@
 # React + Vite
 
+# Two scripts for start properly application
+
+#npm run server (this is JSON server, command to running data )
+#npm run dev (start application)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
