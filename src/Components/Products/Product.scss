@@ -12,14 +12,24 @@
   height: 282px;
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.4s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .product-card:hover {
   transform: scale(1.05);
   border: 1px solid #667781;
+  color: rgb(217, 228, 238);
   box-shadow: 0 8px 16px rgba(6, 78, 6, 0.2),
     0 12px 40px rgba(72, 189, 101, 0.2);
+}
+
+.product-card:hover .product-title {
+  color: rgb(215, 229, 245);
+}
+
+.link-icon-pair:hover {
+  transform: translateY(-2px);
+  transform: scale(1.1);
 }
 
 .product-image {
@@ -63,7 +73,7 @@
   z-index: -1;
   transform: scaleY(0);
   transition: all 0.5s cubic-bezier(0.95, 0.05, 0.795, 0.035);
-  transform-origin: top;
+  transform-origin: left;
 }
 
 .product-info.product-info-background:hover::before,
