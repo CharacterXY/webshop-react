@@ -24,6 +24,9 @@ function Product({
   const handleProductToCart = () => {
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
+    if (!isAvailable) {
+      alert("Proizvod nije dostupan");
+    }
   };
 
   const { openModal } = useModal();
@@ -72,10 +75,12 @@ function Product({
           </div>
         </div>
       </div>
-      {showToast && (
+      {showToast && isAvailable ? (
         <div className="toast show">
           Proizvod {`${id}`} je dodan u Vašu košaricu !
         </div>
+      ) : (
+        <div className="toast warning">Proizvod trenutno nije dostupan</div>
       )}
     </div>
   );

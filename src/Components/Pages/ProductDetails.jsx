@@ -14,18 +14,9 @@ function ProductDetails() {
   const [indexImage, setIndexImage] = useState(0);
   const [showToast, setShowToast] = useState(false);
 
-  if (selectedProduct) {
-    console.log(selectedProduct);
-  }
-
   //const { openModal } = useModal();
   const { addToCart } = useCart();
   const { cart } = useCart();
-
-  const marko = {
-    age: 34,
-    role: "web-developer",
-  };
 
   const handleProductToCart = (selectedProduct) => {
     console.log("Adding to cart:", selectedProduct);
