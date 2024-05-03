@@ -5,21 +5,35 @@ import "./ProductDetails.scss";
 import "../../assets/main.scss";
 import "../Products/Product.scss";
 import { useModal } from "../ModalContext";
+import { useCart } from "../CartContext";
 import "../Pages/ProductDetails.scss";
 
 function ProductDetails() {
   const { selectedProduct, closeModal } = useModal();
   const [quantity, setQuantity] = useState(1);
   const [indexImage, setIndexImage] = useState(0);
-
   const [showToast, setShowToast] = useState(false);
 
-  const handleProductToCart = () => {
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
+  if (selectedProduct) {
+    console.log(selectedProduct);
+  }
+
+  //const { openModal } = useModal();
+  const { addToCart } = useCart();
+  const { cart } = useCart();
+
+  const marko = {
+    age: 34,
+    role: "web-developer",
   };
 
-  const { openModal } = useModal();
+  const handleProductToCart = (selectedProduct) => {
+    console.log("Adding to cart:", selectedProduct);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+    addToCart(selectedProduct);
+    console.log(cart);
+  };
 
   // Dodajem dinamicki klasu za animaciju da pulsira ovisno o stanju
   let lightClass = selectedProduct?.isAvailable
@@ -169,7 +183,7 @@ function ProductDetails() {
             <button
               className="btn btn-background"
               id="btn-modal"
-              onClick={handleProductToCart}
+              onClick={() => handleProductToCart(selectedProduct)}
             >
               <i className="fas fa-shopping-cart"></i> Dodaj u košaricu
             </button>

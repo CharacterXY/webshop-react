@@ -1,0 +1,116 @@
+.cart {
+  background-color: #5d7e60;
+  padding-top: 20rem;
+  color: rgb(112, 119, 115);
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.image-container {
+  position: absolute;
+  top: 0; // Počinje od vrha
+  right: 0; // Počinje od desnog ruba
+  width: 100vw; // Zauzima cijelu širinu viewporta
+  height: 100vh; // Zauzima cijelu visinu viewporta
+  clip-path: polygon(100% 0, 100% 100%, 70% 100%, 40% 100%);
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  background-image: linear-gradient(
+    186deg,
+    rgba(66, 62, 48, 1) 80%,
+    rgba(221, 228, 214, 1) 30%,
+    rgba(151, 191, 76, 1) 20%,
+    /* Ostatak boja s jedinstvenim postotcima */
+  );
+  background-position: center;
+  background-size: cover;
+}
+
+.cart__container {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  height: 400px;
+  background-color: beige;
+  justify-content: start;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.19);
+  z-index: 1000;
+}
+
+.cart__header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  font-size: 14px;
+  color: rgb(90, 124, 101);
+}
+
+.cart__body {
+  width: 100%;
+  font-size: 20px;
+}
+
+.cart__body-header {
+  display: flex;
+  background-color: rgb(90, 124, 101);
+  justify-content: space-between;
+  padding: 10px 15px;
+  color: whitesmoke;
+  height: 40px;
+}
+
+.cart__body-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.cart__header-item,
+.cart__item-detail {
+  flex: 1; // Ovo je skraćeni oblik za flex-grow, flex-shrink i flex-basis
+  text-align: center;
+  padding: 0 10px; // Ovo osigurava malo prostora između elemenata
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &--title {
+    color: #5d7e60;
+    font-size: 18px;
+  }
+}
+
+.card__item-detail--title {
+  font-size: 20px;
+  color: #5d7e60;
+  font-weight: 500;
+}
+
+.cart__body-header:first-child {
+  flex: 2; /* Daje veću fleksibilnost prvom stupcu u zaglavlju */
+}
+
+.cart__body-header .cart__header-item:first-child {
+  flex: 2; /* Daje veću fleksibilnost prvom stupcu u zaglavlju */
+}
+
+/* Povećajte širinu 'cart__item-detail' koji sadrži sliku */
+.cart__body-item .cart__item-detail:first-child {
+  flex: 2; /* Daje veću fleksibilnost prvom stupcu gdje je slika */
+}
+
+/* Prilagodite ostale 'cart__item-detail' kako bi se uklopili */
+.cart__body-item .cart__item-detail:not(:first-child) {
+  flex: 1; /* Osigurava da ostali stupci zauzimaju manje prostora */
+}

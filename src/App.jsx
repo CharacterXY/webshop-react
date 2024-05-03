@@ -6,7 +6,9 @@ import AppWrapperComponent from "./Components/AppWrapper/AppWrapperComponent";
 import PageNotFound from "./Components/Pages/PageNotFound";
 import AppLayout from "./Components/Pages/AppLayout";
 import BikesPage from "./Components/Pages/BikesPage";
+import Cart from "./Components/Pages/Cart";
 import { ModalProvider } from "./Components/ModalContext";
+import { CartProvider } from "./Components/CartContext";
 
 function App() {
   const BASE_URL = "http://localhost:9000";
@@ -35,27 +37,31 @@ function App() {
   return (
     <>
       <ModalProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<AppWrapperComponent />} />
-            <Route path="*" element={<PageNotFound />} />
-            <Route
-              path="bicikli"
-              element={<BikesPage products={products} isLoading={isLoading} />}
-            />
-            <Route
-              path="bicikli/:id"
-              element={<ProductDetails products={products} />}
-            />
+        <CartProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<AppWrapperComponent />} />
+              <Route path="*" element={<PageNotFound />} />
+              <Route
+                path="bicikli"
+                element={
+                  <BikesPage products={products} isLoading={isLoading} />
+                }
+              />
+              <Route
+                path="bicikli/:id"
+                element={<ProductDetails products={products} />}
+              />
 
-            <Route path="/oprema" element={<AppLayout />} />
-            <Route path="/dijelovi" element={<AppLayout />} />
-            <Route path="/blog" element={<AppLayout />} />
-            <Route path="/akcija" element={<AppLayout />} />
-            <Route path="/kontakt" element={<AppLayout />} />
-            <Route path="/cart" element={<AppLayout />} />
-          </Routes>
-        </BrowserRouter>
+              <Route path="/oprema" element={<AppLayout />} />
+              <Route path="/dijelovi" element={<AppLayout />} />
+              <Route path="/blog" element={<AppLayout />} />
+              <Route path="/akcija" element={<AppLayout />} />
+              <Route path="/kontakt" element={<AppLayout />} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
       </ModalProvider>
     </>
   );

@@ -2,7 +2,14 @@ import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/logo15.png";
 
+import { useCart } from "../CartContext";
+import { useState } from "react";
+
 function Header() {
+  const { cart } = useCart();
+
+  const [cartCounter, setCartCounter] = useState(cart.length);
+
   return (
     <header className="header">
       <div className="header__top-row">
@@ -24,7 +31,7 @@ function Header() {
           <div id="login-btn" className="fas fa-user"></div>
           <NavLink to="/cart">
             <a href="" className="fas fa-shopping-cart">
-              <span className="cart-counter">1</span>
+              <span className="cart-counter">{cartCounter}</span>
             </a>
           </NavLink>
         </div>

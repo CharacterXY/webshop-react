@@ -110,7 +110,7 @@ function Bikes({ isLoading }) {
                       : [product.imageUrl]
                   }
                   stock={product.stock}
-                  brend={product.brend}
+                  brand={product.brand}
                   category={product.category}
                   rating={product.rating}
                   isAvailable={product.isAvailable}
