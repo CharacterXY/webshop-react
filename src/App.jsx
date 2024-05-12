@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Product from "./Components/Products/Product";
 import ProductDetails from "./Components/Pages/ProductDetails";
 import AppWrapperComponent from "./Components/AppWrapper/AppWrapperComponent";
 import PageNotFound from "./Components/Pages/PageNotFound";
 import AppLayout from "./Components/Pages/AppLayout";
 import BikesPage from "./Components/Pages/BikesPage";
-import Cart from "./Components/Pages/Cart";
+import { Cart } from "./Components/Pages/Cart";
 import { ModalProvider } from "./Components/ModalContext";
 import { CartProvider } from "./Components/CartContext";
 
@@ -58,7 +57,8 @@ function App() {
               <Route path="/blog" element={<AppLayout />} />
               <Route path="/akcija" element={<AppLayout />} />
               <Route path="/kontakt" element={<AppLayout />} />
-              <Route path="/cart" element={<Cart />} />
+
+              <Route path="/cart" element={<Cart />} component={Cart} />
             </Routes>
           </BrowserRouter>
         </CartProvider>

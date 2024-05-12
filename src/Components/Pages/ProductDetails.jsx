@@ -16,14 +16,12 @@ function ProductDetails() {
 
   //const { openModal } = useModal();
   const { addToCart } = useCart();
-  const { cart } = useCart();
 
   const handleProductToCart = (selectedProduct) => {
     console.log("Adding to cart:", selectedProduct);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
     addToCart(selectedProduct);
-    console.log(cart);
   };
 
   // Dodajem dinamicki klasu za animaciju da pulsira ovisno o stanju
@@ -93,7 +91,7 @@ function ProductDetails() {
               )}
             </div>
             <p>
-              * Podaci navedeni na ovoj stranici su informativne prirode i nisu
+              *Podaci navedeni na ovoj stranici su informativne prirode i nisu
               obvezujući. Slike ne moraju odgovarati točno proizvodu na
               stranici, svi podaci su podložni promjeni bez prethodne najave.
             </p>

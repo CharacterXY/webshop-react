@@ -5,11 +5,15 @@
 }
 
 .main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #fffefe;
   padding-top: 8rem;
   border-bottom: 6px solid rgb(222, 223, 219);
   border-right: 10px solid rgb(206, 202, 202);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding-bottom: 3rem;
 }
 
 .card-container {
@@ -220,11 +224,12 @@ input[type="checkbox"] {
 
 .pagination {
   display: flex;
+  align-content: end;
   justify-content: center;
+  align-items: end;
   height: 100px;
   margin-right: 2em;
   margin-top: 2em;
-  border-top: 2px solid rgb(112, 134, 112);
 
   &--1 {
     background-color: #344934;

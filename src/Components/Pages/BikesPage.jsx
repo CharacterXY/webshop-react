@@ -5,15 +5,22 @@ import Footer from "../Footer/Footer";
 import SidebarProducts from "../SidebarProducts/SidebarProducts";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Spinner from "../Spinner/Spinner";
 import "../../assets/main.scss";
 import "./BikesPage.scss";
 import { useModal } from "../ModalContext";
 
-function Bikes({ isLoading }) {
+import { ShoppingCart } from "../Pages/Cart";
+
+import CircularProgress from "@mui/material/CircularProgress";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
+
+function Bikes() {
   const BASE_URL = "http://localhost:9000";
   const [products, setProducts] = useState([]);
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   let text = ` Izbor Trek modela izrazito je velik, bez obzira želite li cestovni
   ili brdski bicikl, ili pak nešto između poput trekking bicikla,
@@ -41,6 +48,7 @@ function Bikes({ isLoading }) {
       } catch {
         alert("There was an error loading data");
       } finally {
+        setIsLoading(false);
       }
     }
 
@@ -50,6 +58,8 @@ function Bikes({ isLoading }) {
   return (
     <>
       <Header />
+      <ShoppingCart />
+
       <div className="container-wrapper">
         <SidebarProducts />
         <div className="main-content">
@@ -119,7 +129,7 @@ function Bikes({ isLoading }) {
                 />
               ))
             ) : (
-              <Spinner />
+              <CircularProgress color="success" size={80} thickness={2} />
             )}
           </div>
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Product.scss";
 import { useModal } from "../ModalContext";
+import { CartProvider, useCart } from "../CartContext";
 import "../Pages/ProductDetails.scss";
 
 function Product({
@@ -19,14 +20,21 @@ function Product({
   isAvailable,
   size,
 }) {
+  const { addToCart } = useCart();
+
   const [showToast, setShowToast] = useState(false);
 
-  const handleProductToCart = () => {
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
+  const handleProductToCart = (event) => {
+    event.preventDefault();
+
     if (!isAvailable) {
       alert("Proizvod nije dostupan");
+    } else {
+      addToCart({ id, title, price, quantity: 1 });
     }
+
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
   };
 
   const { openModal } = useModal();
@@ -75,12 +83,10 @@ function Product({
           </div>
         </div>
       </div>
-      {showToast && isAvailable ? (
+      {showToast && isAvailable && (
         <div className="toast show">
           Proizvod {`${id}`} je dodan u Vašu košaricu !
         </div>
-      ) : (
-        <div className="toast warning">Proizvod trenutno nije dostupan</div>
       )}
     </div>
   );
