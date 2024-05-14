@@ -9,7 +9,7 @@ import "../../assets/main.scss";
 import "./BikesPage.scss";
 import { useModal } from "../ModalContext";
 
-import { ShoppingCart } from "../Pages/Cart";
+import ShoppingCart from "../Pages/Cart";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import LinearProgress, {

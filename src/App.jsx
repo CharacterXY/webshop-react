@@ -5,9 +5,10 @@ import AppWrapperComponent from "./Components/AppWrapper/AppWrapperComponent";
 import PageNotFound from "./Components/Pages/PageNotFound";
 import AppLayout from "./Components/Pages/AppLayout";
 import BikesPage from "./Components/Pages/BikesPage";
-import { Cart } from "./Components/Pages/Cart";
+
 import { ModalProvider } from "./Components/ModalContext";
 import { CartProvider } from "./Components/CartContext";
+import ShoppingCart from "./Components/Pages/Cart";
 
 function App() {
   const BASE_URL = "http://localhost:9000";
@@ -58,7 +59,7 @@ function App() {
               <Route path="/akcija" element={<AppLayout />} />
               <Route path="/kontakt" element={<AppLayout />} />
 
-              <Route path="/cart" element={<Cart />} component={Cart} />
+              <Route path="/cart" element={<ShoppingCart />} />
             </Routes>
           </BrowserRouter>
         </CartProvider>

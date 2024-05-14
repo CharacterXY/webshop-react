@@ -1,21 +1,22 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "../CartContext"; // Your custom hook for accessing cart state
-import Header from "../Header/Header";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
-import IconButton from "@mui/material/IconButton";
+import {
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+  Typography,
+  Button,
+  Drawer,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
+/* 
 const Cart = () => {
   const calculateTotal = (items) =>
     items.reduce((acc, item) => acc + item.amount * item.price, 0);
@@ -24,7 +25,6 @@ const Cart = () => {
 
   return (
     <>
-      <Header />
       <div className="cart">
         <div className="image-container">
           <img src={CartBasket} alt="Basket full of bikes" />
@@ -58,9 +58,9 @@ const Cart = () => {
       </div>
     </>
   );
-};
+}; */
 
-const CartItem = ({ imageUrl, brand, quantity, price, title }) => {
+/* const CartItem = ({ imageUrl, brand, quantity, price, title }) => {
   return (
     <div className="cart__item-detail">
       <img
@@ -80,54 +80,62 @@ const CartItem = ({ imageUrl, brand, quantity, price, title }) => {
       </div>
     </div>
   );
-};
+}; */
 
-const ShoppingCart = () => {
-  const { cart, removeFromCart } = useCart();
+const ShoppingCart = ({ isOpen, toggleDrawer }) => {
+  const { cart } = useCart();
+  const [total, setTotal] = useState(0);
 
-  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    const calculateTotal = () => {
+      const totalPrice = cart.reduce(
+        (acc, curr) => acc + curr.price * curr.quantity,
+        0
+      );
+      setTotal(totalPrice);
+    };
 
-  const toggleBasket = () => {
-    setIsOpen(!isOpen);
-  };
+    calculateTotal();
+  }, [cart]);
 
   return (
-    <Card>
-      <CardContent onClick={toggleBasket} variant="contained">
-        <Typography variant="h6" component="h2">
-          Shopping Cart
-        </Typography>
-        <List dense>
-          {cart.map((item, index) => (
-            <ListItem key={index}>
-              <ListItemText
-                primary={item.title}
-                secondary={`Price: $${item.price} x ${item.quantity} = $${
-                  item.price * item.quantity
-                }`}
-              />
-              <ListItemSecondaryAction>
-                <IconButton
-                  edge="end"
-                  aria-label="delete"
-                  onClick={() => removeFromCart(item.id)}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
-        </List>
-        <Button
-          variant="contained"
-          color="primary"
-          style={{ marginTop: "20px" }}
-        >
-          Checkout
-        </Button>
-      </CardContent>
-    </Card>
+    <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
+      <Card>
+        <CardContent>
+          <Typography variant="h6" component="h2">
+            Shopping Cart
+          </Typography>
+          <List dense>
+            {cart?.map((item, index) => (
+              <ListItem key={index}>
+                <ListItemText
+                  primary={item.title}
+                  secondary={`Price: $${item.price} x ${item.quantity} = $${
+                    item.price * item.quantity
+                  }`}
+                />
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="delete">
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))}
+          </List>
+          <Button
+            variant="contained"
+            color="success"
+            style={{ marginTop: "10px" }}
+          >
+            Checkout
+          </Button>
+        </CardContent>
+      </Card>
+      <Typography variant="h5" component="p" style={{ marginTop: "10px" }}>
+        Total: ${total.toFixed(2)}
+      </Typography>
+    </Drawer>
   );
 };
 
-export { Cart, CartItem, ShoppingCart };
+export default ShoppingCart;

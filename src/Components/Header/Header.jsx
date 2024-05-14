@@ -1,21 +1,22 @@
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/logo15.png";
-
 import { useCart } from "../CartContext";
 import { useState } from "react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { ShoppingCart } from "../Pages/Cart";
-import IconButton from "@mui/material/IconButton";
+import ShoppingCart from "../Pages/Cart";
 
 function Header() {
   const { cart } = useCart();
+  const [cartCounter, setCartCounter] = useState(cart.length);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
 
-  const [cartCounter] = useState(1);
+  const toggleDrawer = () => {
+    setDrawerOpen(!isDrawerOpen);
+  };
 
   return (
     <>
-      <ShoppingCart />
+      <ShoppingCart isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
       <header className="header">
         <div className="header__top-row">
           <div className="contact-icons">
@@ -34,9 +35,9 @@ function Header() {
           <div className="header__web-icons">
             <a href="#search" className="fas fa-search"></a>
             <div id="login-btn" className="fas fa-user"></div>
-            <NavLink to="/cart" className="fas fa-shopping-cart">
+            <div onClick={toggleDrawer} className="fas fa-shopping-cart">
               <span className="cart-counter">{cartCounter}</span>
-            </NavLink>
+            </div>
           </div>
         </div>
 
