@@ -70,7 +70,7 @@ function Product({
           <div className="bottom-card">
             <div className="link-icon-pair">
               {" "}
-              <NavLink to="" onClick={handleProductToCart}>
+              <NavLink to="" onClick={addToCart}>
                 U Košaricu{" "}
               </NavLink>
               <i className="fas fa-shopping-cart"></i>
@@ -93,11 +93,18 @@ function Product({
 }
 
 Product.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   imageUrl: PropTypes.array.isRequired,
+  productCode: PropTypes.string,
+  stock: PropTypes.number,
+  brand: PropTypes.string,
+  category: PropTypes.string,
+  rating: PropTypes.number,
   isAvailable: PropTypes.bool.isRequired,
+  size: PropTypes.string,
 };
 
 export default Product;

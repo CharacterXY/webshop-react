@@ -10,12 +10,12 @@ import "../Pages/ProductDetails.scss";
 
 function ProductDetails() {
   const { selectedProduct, closeModal } = useModal();
-  const [quantity, setQuantity] = useState(1);
   const [indexImage, setIndexImage] = useState(0);
   const [showToast, setShowToast] = useState(false);
+  const [quantity, setQuantity] = useState(0);
 
   //const { openModal } = useModal();
-  const { addToCart } = useCart();
+  const { addToCart, increaseQuantity, decreaseQuantity } = useCart();
 
   const handleProductToCart = (selectedProduct) => {
     console.log("Adding to cart:", selectedProduct);
@@ -31,18 +31,6 @@ function ProductDetails() {
 
   function setPicture(index) {
     setIndexImage(index);
-  }
-
-  function increaseQuantity() {
-    setQuantity(quantity + 1);
-  }
-
-  function decreaseQuantity() {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    } else {
-      alert("Morate imati bar jedan proizvod da biste nastavili");
-    }
   }
 
   return selectedProduct ? (

@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import "./SidebarProducts.scss";
 import "../../assets/main.scss";
+import iconEuro from "../../assets/icons8-euro-33.png";
+import Slider from "@mui/material/Slider";
 
 function SidebarProducts() {
   const [price, setPrice] = useState(100);
@@ -52,7 +54,9 @@ function SidebarProducts() {
                   name={item.name}
                   value={item.value}
                 />
-                <label htmlFor={item.name}>{item.name}</label>
+                <label htmlFor={item.name} className="sidebar-brand">
+                  {item.name}
+                </label>
               </div>
             );
           })}
@@ -62,22 +66,40 @@ function SidebarProducts() {
           <br />
           <div className="form-group">
             <input type="checkbox" id="brand1" name="brand1" value="Trek" />
-            <label htmlFor="category1">MTB</label>
+            <label htmlFor="category1" className="sidebar-brand">
+              MTB
+            </label>
           </div>
           <div className="form-group">
             <input type="checkbox" id="brand2" name="brand2" value="Giant" />
-            <label htmlFor="category2">City Bikes</label>
+            <label htmlFor="category2" className="sidebar-brand">
+              City Bikes
+            </label>
           </div>
           <div className="form-group">
             <input type="checkbox" id="brand3" name="brand3" value="Norco" />
-            <label htmlFor="category3">Electric Bikes</label>
+            <label htmlFor="category3" className="sidebar-brand">
+              Electric Bikes
+            </label>
+          </div>
+          <div className="form-group">
+            <input type="checkbox" id="brand3" name="brand4" value="" />
+            <label htmlFor="category4" className="sidebar-brand">
+              Enduro Bikes
+            </label>
+          </div>
+          <div className="form-group">
+            <input type="checkbox" id="brand3" name="brand4" value="" />
+            <label htmlFor="category5" className="sidebar-brand">
+              BMX
+            </label>
           </div>
           <br />
           <h3>Price:</h3>
           <hr />
 
           <div className="price-box">
-            <p>Please select your price:</p>
+            <p className="price-box__heading">Please select your price:</p>
 
             <input type="radio" id="price1" name="price" defaultValue="100" />
             <label htmlFor="price1">0 - 100 € </label>
@@ -89,7 +111,29 @@ function SidebarProducts() {
             <label htmlFor="price3">0 - 1000 €</label>
             <br />
 
-            <input
+            <Slider
+              sx={{
+                color: "green",
+                "& .MuiSlider-thumb": {
+                  borderRadius: "20px",
+                },
+                "& .MuiSlider-track": {
+                  bgcolor: "green",
+                },
+                "& .MuiSlider-rail": {
+                  bgcolor: "#d8d8d8",
+                },
+              }}
+              onChange={handlePriceChange}
+              aria-label="Price"
+              value={price}
+              min={100}
+              max={5000}
+              step={10}
+              valueLabelDisplay="auto"
+            />
+
+            {/*      <input
               onChange={handlePriceChange}
               type="range"
               id="price"
@@ -98,16 +142,15 @@ function SidebarProducts() {
               max="5000"
               defaultValue={price}
               step="10"
-            />
-            <br />
+            /> */}
             <br />
 
-            <p className="">
+            <div className="slider">
               Value:{" "}
-              <output htmlFor="price" className="sidebar-price">
-                {price} €
+              <output htmlFor="slider__price" className="slider__price">
+                {price} <img src={iconEuro} className="slider__icon"></img>
               </output>{" "}
-            </p>
+            </div>
           </div>
         </form>
       </aside>

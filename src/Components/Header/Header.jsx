@@ -6,8 +6,8 @@ import { useState } from "react";
 import ShoppingCart from "../Pages/Cart";
 
 function Header() {
-  const { cart } = useCart();
-  const [cartCounter, setCartCounter] = useState(cart.length);
+  const { cart, decreaseQuantity, increaseQuantity } = useCart();
+
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -16,7 +16,12 @@ function Header() {
 
   return (
     <>
-      <ShoppingCart isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+      <ShoppingCart
+        isOpen={isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+        decreaseQuantity={decreaseQuantity}
+        increaseQuantity={increaseQuantity}
+      />
       <header className="header">
         <div className="header__top-row">
           <div className="contact-icons">
@@ -36,7 +41,7 @@ function Header() {
             <a href="#search" className="fas fa-search"></a>
             <div id="login-btn" className="fas fa-user"></div>
             <div onClick={toggleDrawer} className="fas fa-shopping-cart">
-              <span className="cart-counter">{cartCounter}</span>
+              <span className="cart-counter">{cart?.length}</span>
             </div>
           </div>
         </div>

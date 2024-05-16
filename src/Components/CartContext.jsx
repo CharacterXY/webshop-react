@@ -28,8 +28,43 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const deleteItemFromCart = (id) => {
+    console.log("Deleting item with id", id);
+
+    setCart((prevCart) => {
+      const newCart = prevCart.filter((item) => item.id !== id);
+      return newCart;
+    });
+  };
+
+  const increaseQuantity = (id) => {
+    setCart((prevCart) => {
+      return prevCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    });
+  };
+
+  const decreaseQuantity = (id) => {
+    setCart((prevCart) => {
+      return prevCart?.map((item) =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : { ...item, quantity: (item.quantity = 1) }
+      );
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        deleteItemFromCart,
+        increaseQuantity,
+        decreaseQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
