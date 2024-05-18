@@ -105,6 +105,25 @@
       "rating": 4.95,
       "isAvailable": true,
       "size": ["S-27.5", "XS-27.5", "S", "M", "L", "XL"]
+    },
+
+    {
+      "id": 6,
+      "title": "NORCO OPTIC C2 2023.",
+      "price": 4149,
+      "description": "Now in its second iteration, the Megatower has evolved and is now even more capable than its predecessor. A slack 63.5° head angle (size large) and 170m fork gives incredible confidence at speed. Paired with a steep seat tube angle of 77.5° (size large) you have a bike ready to send it at the bike park and then pedal up for more laps.Coming stock with 165mm of rear travel, but able to be increased to 170mm with a longer stroke shock, the Megatower certainly won’t be holding you back when the going gets rough. A revised VPP link uses a lower overall leverage ratio to give a more controlled feeling to the rear suspension, meaning less time setting up the rear shock and more time on the trails.The new Glovebox keeps essentials close at hand and makes packless riding easier. Santa Cruz’s adjustable Hi/Lo geometry as well as their legendary build quality and warranty round out Santa Cruz’s new Megatower.",
+      "imageUrl": [
+        "/src/assets/NorcoOpticC22023.jpg",
+        "/src/assets/santa-cruz-my21_mt_details_002.jpg",
+        "/src/assets/santa-cruz-my21_mt_details_010.jpg"
+      ],
+      "productCode": 3028466,
+      "stock": 3,
+      "brand": "Norco",
+      "category": "Trail",
+      "rating": 4.95,
+      "isAvailable": true,
+      "size": ["S-27.5", "XS-27.5", "S", "M", "L", "XL"]
     }
   ]
 }

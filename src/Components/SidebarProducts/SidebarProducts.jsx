@@ -1,39 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./SidebarProducts.scss";
 import "../../assets/main.scss";
 import iconEuro from "../../assets/icons8-euro-33.png";
 import Slider from "@mui/material/Slider";
 
-function SidebarProducts() {
-  const [price, setPrice] = useState(100);
+function SidebarProducts({ products, setFilteredProducts, price, setPrice }) {
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
-  }
+  useEffect(() => {
+    // Correct placement of console.log for debugging
+    console.log("Selected Categories: ", selectedCategories);
+    console.log("Current Price: ", price);
+    console.log("Filtering Products...");
+
+    const filtered = products.filter((item) => {
+      // Log each item's price to debug filtering logic
+      console.log("Item Price: ", item.price);
+
+      return selectedCategories.length > 0
+        ? item.price <= price && selectedCategories.includes(item.category)
+        : item.price <= price;
+    });
+
+    console.log("Filtered Products: ", filtered);
+    setFilteredProducts(filtered);
+  }, [price, products, selectedCategories]);
+
+  const handleCategoryChange = (event) => {
+    const categoryName = event.target.value;
+    setSelectedCategories((prev) =>
+      event.target.checked
+        ? [...prev, categoryName]
+        : prev.filter((category) => category !== categoryName)
+    );
+  };
+
+  const handlePriceChange = (event, newValue) => {
+    console.log("new price", newValue);
+    setPrice(newValue);
+  };
 
   const radioButtons = [
-    {
-      id: "brand1",
-      value: "Trek",
-      name: "Trek",
-    },
-    {
-      id: "brand2",
-      value: "Giant",
-      name: "Giant",
-    },
-    {
-      id: "brand3",
-      value: "Norco",
-      name: "Norco",
-    },
-    {
-      id: "brand3",
-      value: "Specialized",
-      name: "Specialized",
-    },
+    { id: "brand1", value: "Trek", name: "Trek" },
+    { id: "brand2", value: "Giant", name: "Giant" },
+    { id: "brand3", value: "Norco", name: "Norco" },
+    { id: "brand4", value: "Specialized", name: "Specialized" },
   ];
+
+  const itemsCategory = products.map((item) => item.category);
+  const unique = [...new Set(itemsCategory)];
+
+  const resetFilter = () => {
+    setPrice(0); // Reset price state to 0
+    setSelectedCategories([]); // Reset selected categories
+  };
 
   return (
     <div>
@@ -64,36 +85,25 @@ function SidebarProducts() {
           <h3>Category:</h3>
           <hr />
           <br />
-          <div className="form-group">
-            <input type="checkbox" id="brand1" name="brand1" value="Trek" />
-            <label htmlFor="category1" className="sidebar-brand">
-              MTB
-            </label>
-          </div>
-          <div className="form-group">
-            <input type="checkbox" id="brand2" name="brand2" value="Giant" />
-            <label htmlFor="category2" className="sidebar-brand">
-              City Bikes
-            </label>
-          </div>
-          <div className="form-group">
-            <input type="checkbox" id="brand3" name="brand3" value="Norco" />
-            <label htmlFor="category3" className="sidebar-brand">
-              Electric Bikes
-            </label>
-          </div>
-          <div className="form-group">
-            <input type="checkbox" id="brand3" name="brand4" value="" />
-            <label htmlFor="category4" className="sidebar-brand">
-              Enduro Bikes
-            </label>
-          </div>
-          <div className="form-group">
-            <input type="checkbox" id="brand3" name="brand4" value="" />
-            <label htmlFor="category5" className="sidebar-brand">
-              BMX
-            </label>
-          </div>
+
+          {unique.map((item) => {
+            console.log(item);
+            return (
+              <div className="form-group" key={item}>
+                <input
+                  type="checkbox"
+                  id={item}
+                  name={item}
+                  value={item}
+                  checked={selectedCategories.includes(item)}
+                  onChange={handleCategoryChange}
+                />
+                <label htmlFor={item.name} className="sidebar-brand">
+                  {item}
+                </label>
+              </div>
+            );
+          })}
           <br />
           <h3>Price:</h3>
           <hr />
@@ -128,7 +138,7 @@ function SidebarProducts() {
               aria-label="Price"
               value={price}
               min={100}
-              max={5000}
+              max={7000}
               step={10}
               valueLabelDisplay="auto"
             />
@@ -157,5 +167,4 @@ function SidebarProducts() {
     </div>
   );
 }
-
 export default SidebarProducts;

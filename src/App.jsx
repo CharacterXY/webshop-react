@@ -5,6 +5,7 @@ import AppWrapperComponent from "./Components/AppWrapper/AppWrapperComponent";
 import PageNotFound from "./Components/Pages/PageNotFound";
 import AppLayout from "./Components/Pages/AppLayout";
 import BikesPage from "./Components/Pages/BikesPage";
+import SidebarProducts from "./Components/SidebarProducts/SidebarProducts";
 
 import { ModalProvider } from "./Components/ModalContext";
 import { CartProvider } from "./Components/CartContext";
@@ -60,6 +61,12 @@ function App() {
               <Route path="/kontakt" element={<AppLayout />} />
 
               <Route path="/cart" element={<ShoppingCart />} />
+              <Route
+                path="/filter"
+                element={
+                  <SidebarProducts products={products} isLoading={isLoading} />
+                }
+              />
             </Routes>
           </BrowserRouter>
         </CartProvider>
