@@ -60,7 +60,10 @@ function Product({
         }
       >
         <div className="product-image">
-          <img src={imageUrl[0]} alt="Product Image" />
+          {Array.isArray(imageUrl) ? (
+               <img src={imageUrl[1]} alt="Product Image" />
+          ) : <img src={imageUrl}></img>}
+        
         </div>
 
         <div className="product-info product-info-background">
