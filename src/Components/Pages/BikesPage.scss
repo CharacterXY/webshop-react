@@ -1,7 +1,7 @@
 .container-wrapper {
   display: flex;
   padding: 0 9%;
-  background-color: #e4ebe4;
+  //background-color: #e4ebe4;đ
 }
 
 .main-content {
@@ -14,6 +14,7 @@
   border-right: 10px solid rgb(206, 202, 202);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
   padding-bottom: 3rem;
+  width: 100%;
 }
 
 .card-container {
@@ -95,12 +96,12 @@ select {
   color: var(--color-primary);
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   accent-color: rgb(81, 101, 81);
 }
 
 /* Skrivanje originalnog checkboxa */
-.custom-checkbox input[type="checkbox"] {
+.custom-checkbox input[type='checkbox'] {
   visibility: hidden;
   position: absolute;
 }
@@ -123,12 +124,12 @@ input[type="checkbox"] {
 }
 
 /* Kad je checkbox označen, prikaži crvenkastu i bijeli check */
-.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+.custom-checkbox input[type='checkbox']:checked + .checkmark {
   background-color: #e66e59; /* bljedo crvena kad je aktivno */
 }
 
-.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
-  content: "";
+.custom-checkbox input[type='checkbox']:checked + .checkmark:after {
+  content: '';
   position: absolute;
   left: 8px;
   top: 4px;
