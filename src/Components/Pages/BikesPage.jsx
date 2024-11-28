@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import Product from "../Products/Product";
@@ -10,7 +11,15 @@ import ShoppingCart from "./Cart";
 import "../../assets/main.scss";
 import "./BikesPage.scss";
 import { selectClasses } from "@mui/material";
+import { getProducts } from "../../utils/api";
 
+const { data: products, isLoading: isProductsLoading } = useQuery(
+  "products",
+  getProducts,
+  { cacheTime: 0 }
+);
+
+useEffect(() => {}, [products]);
 function Bikes() {
   const BASE_URL = "http://localhost:9000";
   const [products, setProducts] = useState([]);
