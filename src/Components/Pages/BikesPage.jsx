@@ -21,7 +21,7 @@ import {
 } from '../../utils/api';
 
 function Bikes() {
-  const { data: numbersOfProducts, isLoading: isLoadingNUmbersOfProducts } =
+  const { data: numbersOfProducts, isLoading: isLoadingNumbersOfProducts } =
     useQuery(`getNumberOfProducts`, getNumberOfProducts, {
       cacheTime: 0,
       select: (data) => data.total, // Set cacheTime to 0 to always /*  */fetch fresh data
@@ -98,7 +98,7 @@ function Bikes() {
 
   useEffect(() => {
     const fetchPaginatedProducts = async () => {
-      if (!isLoadingNUmbersOfProducts) {
+      if (!isLoadingNumbersOfProducts && numbersOfProducts) {
         dispatch({ type: 'SET_TOTAL_PRODUCTS', payload: numbersOfProducts });
       }
       try {
@@ -131,7 +131,12 @@ function Bikes() {
     };
 
     fetchPaginatedProducts();
-  }, [state.page, state.limitPerPage]);
+  }, [
+    state.page,
+    state.limitPerPage,
+    numbersOfProducts,
+    isLoadingNumbersOfProducts,
+  ]);
 
   const handlePageChange = async (event, value) => {
     console.log('value je tip', typeof value);
@@ -204,6 +209,13 @@ function Bikes() {
                 shape='rounded'
                 color='secondary'
                 onChange={handlePageChange}
+                sx={{
+                  '& .MuiPaginationItem-root': {
+                    fontSize: '1.5rem', // Povećava veličinu brojeva
+                    padding: '20px 20px', // Povećava razmak
+                    margin: '0 5px', // Dodaje margine između elemenata
+                  },
+                }}
               />
             </Stack>
           </div>
